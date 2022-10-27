@@ -1,0 +1,23 @@
+module Desafio2(
+input clk,
+output reg [17:0] leds
+);
+
+reg sentido;
+
+always @(posedge clk)
+	begin
+		case(leds)
+			18'b000000000000000000	:	leds = 18'b100000000000000000;
+			18'b100000000000000000	:	sentido = 1;
+			18'b000000000000000001	:	sentido = 0;
+		endcase
+		
+		if(sentido == 1) begin
+			leds >> 1;
+		else
+			leds << 1;
+	end
+endmodule
+			
+				

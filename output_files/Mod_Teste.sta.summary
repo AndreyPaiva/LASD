@@ -1,0 +1,77 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow Model Setup 'CLOCK_50'
+Slack : -2.683
+TNS   : -170.047
+
+Type  : Slow Model Setup 'Divisor18hz:div|clk18'
+Slack : -1.175
+TNS   : -6.079
+
+Type  : Slow Model Setup 'DivFrequencia:divisor|clk1'
+Slack : -0.272
+TNS   : -0.500
+
+Type  : Slow Model Hold 'CLOCK_50'
+Slack : -2.566
+TNS   : -5.112
+
+Type  : Slow Model Hold 'DivFrequencia:divisor|clk1'
+Slack : 0.391
+TNS   : 0.000
+
+Type  : Slow Model Hold 'Divisor18hz:div|clk18'
+Slack : 0.391
+TNS   : 0.000
+
+Type  : Slow Model Minimum Pulse Width 'CLOCK_50'
+Slack : -1.380
+TNS   : -106.380
+
+Type  : Slow Model Minimum Pulse Width 'Divisor18hz:div|clk18'
+Slack : -0.500
+TNS   : -19.000
+
+Type  : Slow Model Minimum Pulse Width 'DivFrequencia:divisor|clk1'
+Slack : -0.500
+TNS   : -4.000
+
+Type  : Fast Model Setup 'CLOCK_50'
+Slack : -0.748
+TNS   : -31.229
+
+Type  : Fast Model Setup 'Divisor18hz:div|clk18'
+Slack : -0.014
+TNS   : -0.039
+
+Type  : Fast Model Setup 'DivFrequencia:divisor|clk1'
+Slack : 0.404
+TNS   : 0.000
+
+Type  : Fast Model Hold 'CLOCK_50'
+Slack : -1.606
+TNS   : -3.193
+
+Type  : Fast Model Hold 'DivFrequencia:divisor|clk1'
+Slack : 0.215
+TNS   : 0.000
+
+Type  : Fast Model Hold 'Divisor18hz:div|clk18'
+Slack : 0.215
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'CLOCK_50'
+Slack : -1.380
+TNS   : -106.380
+
+Type  : Fast Model Minimum Pulse Width 'Divisor18hz:div|clk18'
+Slack : -0.500
+TNS   : -19.000
+
+Type  : Fast Model Minimum Pulse Width 'DivFrequencia:divisor|clk1'
+Slack : -0.500
+TNS   : -4.000
+
+------------------------------------------------------------
