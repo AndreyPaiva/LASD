@@ -1,0 +1,14 @@
+module ULA(
+input [7:0] SrcA,
+input [7:0] SrcB, 
+input [2:0] ULAControl, 
+output Z,
+output reg [7:0] ULAResult
+);
+
+reg [7:0] Result [7:0];
+
+always @(*)
+begin
+	case(ULAControl)
+		

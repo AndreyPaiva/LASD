@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Mod_Teste
-Fri Oct 21 12:23:35 2022
+Mon Nov 07 12:06:25 2022
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -15,14 +15,15 @@ Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
   7. Analysis & Synthesis Resource Utilization by Entity
   8. State Machine - |Mod_Teste|LCD_TEST:MyLCD|mLCD_ST
   9. State Machine - |Mod_Teste|LCD_TEST:MyLCD|LCD_Controller:u0|ST
- 10. Registers Removed During Synthesis
- 11. General Register Statistics
- 12. Inverted Register Statistics
+ 10. User-Specified and Inferred Latches
+ 11. Registers Removed During Synthesis
+ 12. General Register Statistics
  13. Multiplexer Restructuring Statistics (Restructuring Performed)
  14. Parameter Settings for User Entity Instance: LCD_TEST:MyLCD
  15. Parameter Settings for User Entity Instance: LCD_TEST:MyLCD|LCD_Controller:u0
- 16. Elapsed Time Per Partition
- 17. Analysis & Synthesis Messages
+ 16. Port Connectivity Checks: "RegisterFile:register"
+ 17. Elapsed Time Per Partition
+ 18. Analysis & Synthesis Messages
 
 
 
@@ -48,15 +49,15 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Oct 21 12:23:35 2022           ;
+; Analysis & Synthesis Status        ; Successful - Mon Nov 07 12:06:25 2022           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; Mod_Teste                                       ;
 ; Top-level Entity Name              ; Mod_Teste                                       ;
 ; Family                             ; Cyclone II                                      ;
-; Total logic elements               ; 218                                             ;
-;     Total combinational functions  ; 217                                             ;
-;     Dedicated logic registers      ; 128                                             ;
-; Total registers                    ; 128                                             ;
+; Total logic elements               ; 359                                             ;
+;     Total combinational functions  ; 302                                             ;
+;     Dedicated logic registers      ; 107                                             ;
+; Total registers                    ; 107                                             ;
 ; Total pins                         ; 194                                             ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0                                               ;
@@ -161,67 +162,63 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                          ;
-+----------------------------------+-----------------+------------------------+---------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                            ; Library ;
-+----------------------------------+-----------------+------------------------+---------------------------------------------------------+---------+
-; Mod_Teste.v                      ; yes             ; User Verilog HDL File  ; E:/LASD/2022.1/Andrey_119110324/Mod_Teste.v             ;         ;
-; LCD_TEST2.v                      ; yes             ; User Verilog HDL File  ; E:/LASD/2022.1/Andrey_119110324/LCD_TEST2.v             ;         ;
-; LCD_Controller.v                 ; yes             ; User Verilog HDL File  ; E:/LASD/2022.1/Andrey_119110324/LCD_Controller.v        ;         ;
-; DecodificadorHexa7Seg.v          ; yes             ; User Verilog HDL File  ; E:/LASD/2022.1/Andrey_119110324/DecodificadorHexa7Seg.v ;         ;
-; DivFrequencia.v                  ; yes             ; User Verilog HDL File  ; E:/LASD/2022.1/Andrey_119110324/DivFrequencia.v         ;         ;
-; ContM10.v                        ; yes             ; User Verilog HDL File  ; E:/LASD/2022.1/Andrey_119110324/ContM10.v               ;         ;
-; Desafio2.v                       ; yes             ; User Verilog HDL File  ; E:/LASD/2022.1/Andrey_119110324/Desafio2.v              ;         ;
-; Divisor18hz.v                    ; yes             ; User Verilog HDL File  ; E:/LASD/2022.1/Andrey_119110324/Divisor18hz.v           ;         ;
-+----------------------------------+-----------------+------------------------+---------------------------------------------------------+---------+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                   ;
++----------------------------------+-----------------+------------------------+--------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                     ; Library ;
++----------------------------------+-----------------+------------------------+--------------------------------------------------+---------+
+; Mod_Teste.v                      ; yes             ; User Verilog HDL File  ; E:/AndreyPaiva_119110324/Mod_Teste.v             ;         ;
+; LCD_TEST2.v                      ; yes             ; User Verilog HDL File  ; E:/AndreyPaiva_119110324/LCD_TEST2.v             ;         ;
+; LCD_Controller.v                 ; yes             ; User Verilog HDL File  ; E:/AndreyPaiva_119110324/LCD_Controller.v        ;         ;
+; DecodificadorHexa7Seg.v          ; yes             ; User Verilog HDL File  ; E:/AndreyPaiva_119110324/DecodificadorHexa7Seg.v ;         ;
+; RegisterFile.v                   ; yes             ; User Verilog HDL File  ; E:/AndreyPaiva_119110324/RegisterFile.v          ;         ;
+; ULA.v                            ; yes             ; User Verilog HDL File  ; E:/AndreyPaiva_119110324/ULA.v                   ;         ;
++----------------------------------+-----------------+------------------------+--------------------------------------------------+---------+
 
 
-+--------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary            ;
-+---------------------------------------------+----------+
-; Resource                                    ; Usage    ;
-+---------------------------------------------+----------+
-; Estimated Total logic elements              ; 218      ;
-;                                             ;          ;
-; Total combinational functions               ; 217      ;
-; Logic element usage by number of LUT inputs ;          ;
-;     -- 4 input functions                    ; 69       ;
-;     -- 3 input functions                    ; 30       ;
-;     -- <=2 input functions                  ; 118      ;
-;                                             ;          ;
-; Logic elements by mode                      ;          ;
-;     -- normal mode                          ; 141      ;
-;     -- arithmetic mode                      ; 76       ;
-;                                             ;          ;
-; Total registers                             ; 128      ;
-;     -- Dedicated logic registers            ; 128      ;
-;     -- I/O registers                        ; 0        ;
-;                                             ;          ;
-; I/O pins                                    ; 194      ;
-; Embedded Multiplier 9-bit elements          ; 0        ;
-; Maximum fan-out node                        ; CLOCK_50 ;
-; Maximum fan-out                             ; 105      ;
-; Total fan-out                               ; 1026     ;
-; Average fan-out                             ; 1.90     ;
-+---------------------------------------------+----------+
++------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary          ;
++---------------------------------------------+--------+
+; Resource                                    ; Usage  ;
++---------------------------------------------+--------+
+; Estimated Total logic elements              ; 359    ;
+;                                             ;        ;
+; Total combinational functions               ; 302    ;
+; Logic element usage by number of LUT inputs ;        ;
+;     -- 4 input functions                    ; 127    ;
+;     -- 3 input functions                    ; 104    ;
+;     -- <=2 input functions                  ; 71     ;
+;                                             ;        ;
+; Logic elements by mode                      ;        ;
+;     -- normal mode                          ; 229    ;
+;     -- arithmetic mode                      ; 73     ;
+;                                             ;        ;
+; Total registers                             ; 107    ;
+;     -- Dedicated logic registers            ; 107    ;
+;     -- I/O registers                        ; 0      ;
+;                                             ;        ;
+; I/O pins                                    ; 194    ;
+; Embedded Multiplier 9-bit elements          ; 0      ;
+; Maximum fan-out node                        ; KEY[1] ;
+; Maximum fan-out                             ; 57     ;
+; Total fan-out                               ; 1369   ;
+; Average fan-out                             ; 2.27   ;
++---------------------------------------------+--------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                         ;
-+------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------+--------------+
-; Compilation Hierarchy Node         ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                         ; Library Name ;
-+------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------+--------------+
-; |Mod_Teste                         ; 217 (1)           ; 128 (0)      ; 0           ; 0            ; 0       ; 0         ; 194  ; 0            ; |Mod_Teste                                  ; work         ;
-;    |ContM10:contador|              ; 4 (4)             ; 4 (4)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Mod_Teste|ContM10:contador                 ; work         ;
-;    |DecodificadorHexa7Seg:decod|   ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Mod_Teste|DecodificadorHexa7Seg:decod      ; work         ;
-;    |DecodificadorHexa7Seg:display| ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Mod_Teste|DecodificadorHexa7Seg:display    ; work         ;
-;    |Desafio2:desafio|              ; 25 (25)           ; 19 (19)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Mod_Teste|Desafio2:desafio                 ; work         ;
-;    |DivFrequencia:divisor|         ; 49 (49)           ; 27 (27)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Mod_Teste|DivFrequencia:divisor            ; work         ;
-;    |Divisor18hz:div|               ; 46 (46)           ; 27 (27)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Mod_Teste|Divisor18hz:div                  ; work         ;
-;    |LCD_TEST:MyLCD|                ; 78 (57)           ; 51 (38)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Mod_Teste|LCD_TEST:MyLCD                   ; work         ;
-;       |LCD_Controller:u0|          ; 21 (21)           ; 13 (13)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Mod_Teste|LCD_TEST:MyLCD|LCD_Controller:u0 ; work         ;
-+------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------+--------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                       ;
++----------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------+--------------+
+; Compilation Hierarchy Node       ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                         ; Library Name ;
++----------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------+--------------+
+; |Mod_Teste                       ; 302 (9)           ; 107 (0)      ; 0           ; 0            ; 0       ; 0         ; 194  ; 0            ; |Mod_Teste                                  ; work         ;
+;    |DecodificadorHexa7Seg:hexa0| ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Mod_Teste|DecodificadorHexa7Seg:hexa0      ; work         ;
+;    |DecodificadorHexa7Seg:hexa1| ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Mod_Teste|DecodificadorHexa7Seg:hexa1      ; work         ;
+;    |LCD_TEST:MyLCD|              ; 175 (154)         ; 51 (38)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Mod_Teste|LCD_TEST:MyLCD                   ; work         ;
+;       |LCD_Controller:u0|        ; 21 (21)           ; 13 (13)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Mod_Teste|LCD_TEST:MyLCD|LCD_Controller:u0 ; work         ;
+;    |RegisterFile:register|       ; 42 (42)           ; 56 (56)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Mod_Teste|RegisterFile:register            ; work         ;
+;    |ULA:ula|                     ; 62 (62)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Mod_Teste|ULA:ula                          ; work         ;
++----------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -251,21 +248,47 @@ Encoding Type:  One-Hot
 +-------+-------+-------+-------+--------------------------------+
 
 
-+------------------------------------------------------------+
-; Registers Removed During Synthesis                         ;
-+---------------------------------------+--------------------+
-; Register name                         ; Reason for Removal ;
-+---------------------------------------+--------------------+
-; LCD_TEST:MyLCD|mLCD_ST~8              ; Lost fanout        ;
-; LCD_TEST:MyLCD|mLCD_ST~9              ; Lost fanout        ;
-; LCD_TEST:MyLCD|mLCD_ST~10             ; Lost fanout        ;
-; LCD_TEST:MyLCD|mLCD_ST~11             ; Lost fanout        ;
-; LCD_TEST:MyLCD|mLCD_ST~12             ; Lost fanout        ;
-; LCD_TEST:MyLCD|mLCD_ST~13             ; Lost fanout        ;
-; LCD_TEST:MyLCD|LCD_Controller:u0|ST~8 ; Lost fanout        ;
-; LCD_TEST:MyLCD|LCD_Controller:u0|ST~9 ; Lost fanout        ;
-; Total Number of Removed Registers = 8 ;                    ;
-+---------------------------------------+--------------------+
++---------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                               ;
++----------------------------------------------------+---------------------+------------------------+
+; Latch Name                                         ; Latch Enable Signal ; Free of Timing Hazards ;
++----------------------------------------------------+---------------------+------------------------+
+; ULA:ula|ULAResult[0]                               ; ULA:ula|Mux8        ; yes                    ;
+; ULA:ula|ULAResult[1]                               ; ULA:ula|Mux8        ; yes                    ;
+; ULA:ula|ULAResult[2]                               ; ULA:ula|Mux8        ; yes                    ;
+; ULA:ula|ULAResult[3]                               ; ULA:ula|Mux8        ; yes                    ;
+; ULA:ula|ULAResult[4]                               ; ULA:ula|Mux8        ; yes                    ;
+; ULA:ula|ULAResult[5]                               ; ULA:ula|Mux8        ; yes                    ;
+; ULA:ula|ULAResult[6]                               ; ULA:ula|Mux8        ; yes                    ;
+; ULA:ula|ULAResult[7]                               ; ULA:ula|Mux8        ; yes                    ;
+; Number of user-specified and inferred latches = 8  ;                     ;                        ;
++----------------------------------------------------+---------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++---------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                              ;
++----------------------------------------+----------------------------------------+
+; Register name                          ; Reason for Removal                     ;
++----------------------------------------+----------------------------------------+
+; RegisterFile:register|register[0][7]   ; Stuck at GND due to stuck port data_in ;
+; RegisterFile:register|register[0][6]   ; Stuck at GND due to stuck port data_in ;
+; RegisterFile:register|register[0][5]   ; Stuck at GND due to stuck port data_in ;
+; RegisterFile:register|register[0][4]   ; Stuck at GND due to stuck port data_in ;
+; RegisterFile:register|register[0][3]   ; Stuck at GND due to stuck port data_in ;
+; RegisterFile:register|register[0][2]   ; Stuck at GND due to stuck port data_in ;
+; RegisterFile:register|register[0][1]   ; Stuck at GND due to stuck port data_in ;
+; RegisterFile:register|register[0][0]   ; Stuck at GND due to stuck port data_in ;
+; LCD_TEST:MyLCD|mLCD_ST~8               ; Lost fanout                            ;
+; LCD_TEST:MyLCD|mLCD_ST~9               ; Lost fanout                            ;
+; LCD_TEST:MyLCD|mLCD_ST~10              ; Lost fanout                            ;
+; LCD_TEST:MyLCD|mLCD_ST~11              ; Lost fanout                            ;
+; LCD_TEST:MyLCD|mLCD_ST~12              ; Lost fanout                            ;
+; LCD_TEST:MyLCD|mLCD_ST~13              ; Lost fanout                            ;
+; LCD_TEST:MyLCD|LCD_Controller:u0|ST~8  ; Lost fanout                            ;
+; LCD_TEST:MyLCD|LCD_Controller:u0|ST~9  ; Lost fanout                            ;
+; Total Number of Removed Registers = 16 ;                                        ;
++----------------------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -273,25 +296,14 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 128   ;
-; Number of registers using Synchronous Clear  ; 19    ;
-; Number of registers using Synchronous Load   ; 6     ;
-; Number of registers using Asynchronous Clear ; 55    ;
+; Total registers                              ; 107   ;
+; Number of registers using Synchronous Clear  ; 22    ;
+; Number of registers using Synchronous Load   ; 10    ;
+; Number of registers using Asynchronous Clear ; 51    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 43    ;
+; Number of registers using Clock Enable       ; 99    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
-
-
-+--------------------------------------------------+
-; Inverted Register Statistics                     ;
-+----------------------------------------+---------+
-; Inverted Register                      ; Fan out ;
-+----------------------------------------+---------+
-; ContM10:contador|cont[0]               ; 11      ;
-; ContM10:contador|cont[3]               ; 10      ;
-; Total number of inverted registers = 2 ;         ;
-+----------------------------------------+---------+
 
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -299,8 +311,10 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                         ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------+
-; 3:1                ; 17 bits   ; 34 LEs        ; 17 LEs               ; 17 LEs                 ; Yes        ; |Mod_Teste|Desafio2:desafio|leds[1]                ;
 ; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Mod_Teste|LCD_TEST:MyLCD|LCD_Controller:u0|mStart ;
+; 64:1               ; 5 bits    ; 210 LEs       ; 50 LEs               ; 160 LEs                ; Yes        ; |Mod_Teste|LCD_TEST:MyLCD|mLCD_DATA[6]             ;
+; 6:1                ; 7 bits    ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; No         ; |Mod_Teste|ULA:ula|Mux6                            ;
+; 8:1                ; 8 bits    ; 40 LEs        ; 32 LEs               ; 8 LEs                  ; No         ; |Mod_Teste|RegisterFile:register|Mux6              ;
 ; 6:1                ; 2 bits    ; 8 LEs         ; 6 LEs                ; 2 LEs                  ; No         ; |Mod_Teste|LCD_TEST:MyLCD|Selector1                ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------+
 
@@ -330,6 +344,18 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
++---------------------------------------------------+
+; Port Connectivity Checks: "RegisterFile:register" ;
++--------+-------+----------+-----------------------+
+; Port   ; Type  ; Severity ; Details               ;
++--------+-------+----------+-----------------------+
+; ra2[2] ; Input ; Info     ; Stuck at GND          ;
+; ra2[1] ; Input ; Info     ; Stuck at VCC          ;
+; ra2[0] ; Input ; Info     ; Stuck at GND          ;
+; we3    ; Input ; Info     ; Stuck at VCC          ;
++--------+-------+----------+-----------------------+
+
+
 +-------------------------------+
 ; Elapsed Time Per Partition    ;
 +----------------+--------------+
@@ -345,7 +371,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Fri Oct 21 12:23:34 2022
+    Info: Processing started: Mon Nov 07 12:06:23 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Mod_Teste -c Mod_Teste
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file mod_teste.v
@@ -364,13 +390,19 @@ Info (12021): Found 1 design units, including 1 entities, in source file desafio
     Info (12023): Found entity 1: Desafio2
 Info (12021): Found 1 design units, including 1 entities, in source file divisor18hz.v
     Info (12023): Found entity 1: Divisor18hz
+Info (12021): Found 1 design units, including 1 entities, in source file registerfile.v
+    Info (12023): Found entity 1: RegisterFile
+Info (12021): Found 1 design units, including 1 entities, in source file ula.v
+    Info (12023): Found entity 1: ULA
 Info (12127): Elaborating entity "Mod_Teste" for the top level hierarchy
-Warning (10034): Output port "HEX1" at Mod_Teste.v(9) has no driver
 Warning (10034): Output port "HEX2" at Mod_Teste.v(9) has no driver
+Warning (10034): Output port "HEX3" at Mod_Teste.v(9) has no driver
+Warning (10034): Output port "HEX4" at Mod_Teste.v(9) has no driver
 Warning (10034): Output port "HEX5" at Mod_Teste.v(9) has no driver
 Warning (10034): Output port "HEX6" at Mod_Teste.v(9) has no driver
 Warning (10034): Output port "HEX7" at Mod_Teste.v(9) has no driver
-Warning (10034): Output port "LEDG[8..2]" at Mod_Teste.v(10) has no driver
+Warning (10034): Output port "LEDG[7..1]" at Mod_Teste.v(10) has no driver
+Warning (10034): Output port "LEDR" at Mod_Teste.v(11) has no driver
 Warning (10034): Output port "UART_TXD" at Mod_Teste.v(13) has no driver
 Info (12128): Elaborating entity "LCD_TEST" for hierarchy "LCD_TEST:MyLCD"
 Warning (10230): Verilog HDL assignment warning at LCD_TEST2.v(60): truncated value with size 32 to match size of target (18)
@@ -378,14 +410,20 @@ Warning (10230): Verilog HDL assignment warning at LCD_TEST2.v(69): truncated va
 Warning (10230): Verilog HDL assignment warning at LCD_TEST2.v(71): truncated value with size 32 to match size of target (6)
 Info (12128): Elaborating entity "LCD_Controller" for hierarchy "LCD_TEST:MyLCD|LCD_Controller:u0"
 Warning (10230): Verilog HDL assignment warning at LCD_Controller.v(66): truncated value with size 32 to match size of target (5)
-Info (12128): Elaborating entity "DecodificadorHexa7Seg" for hierarchy "DecodificadorHexa7Seg:decod"
-Info (12128): Elaborating entity "DivFrequencia" for hierarchy "DivFrequencia:divisor"
-Warning (10230): Verilog HDL assignment warning at DivFrequencia.v(16): truncated value with size 32 to match size of target (26)
-Info (12128): Elaborating entity "ContM10" for hierarchy "ContM10:contador"
-Warning (10230): Verilog HDL assignment warning at ContM10.v(16): truncated value with size 32 to match size of target (4)
-Info (12128): Elaborating entity "Divisor18hz" for hierarchy "Divisor18hz:div"
-Warning (10230): Verilog HDL assignment warning at Divisor18hz.v(16): truncated value with size 32 to match size of target (26)
-Info (12128): Elaborating entity "Desafio2" for hierarchy "Desafio2:desafio"
+Info (12128): Elaborating entity "DecodificadorHexa7Seg" for hierarchy "DecodificadorHexa7Seg:hexa0"
+Info (12128): Elaborating entity "RegisterFile" for hierarchy "RegisterFile:register"
+Info (12128): Elaborating entity "ULA" for hierarchy "ULA:ula"
+Warning (10230): Verilog HDL assignment warning at ULA.v(17): truncated value with size 32 to match size of target (8)
+Warning (10270): Verilog HDL Case Statement warning at ULA.v(11): incomplete case statement has no default case item
+Warning (10240): Verilog HDL Always Construct warning at ULA.v(11): inferring latch(es) for variable "ULAResult", which holds its previous value in one or more paths through the always construct
+Info (10041): Inferred latch for "ULAResult[0]" at ULA.v(11)
+Info (10041): Inferred latch for "ULAResult[1]" at ULA.v(11)
+Info (10041): Inferred latch for "ULAResult[2]" at ULA.v(11)
+Info (10041): Inferred latch for "ULAResult[3]" at ULA.v(11)
+Info (10041): Inferred latch for "ULAResult[4]" at ULA.v(11)
+Info (10041): Inferred latch for "ULAResult[5]" at ULA.v(11)
+Info (10041): Inferred latch for "ULAResult[6]" at ULA.v(11)
+Info (10041): Inferred latch for "ULAResult[7]" at ULA.v(11)
 Warning (13034): The following nodes have both tri-state and non-tri-state drivers
     Warning (13035): Inserted always-enabled tri-state buffer between "LCD_DATA[0]" and its non-tri-state driver.
     Warning (13035): Inserted always-enabled tri-state buffer between "LCD_DATA[1]" and its non-tri-state driver.
@@ -395,8 +433,22 @@ Warning (13034): The following nodes have both tri-state and non-tri-state drive
     Warning (13035): Inserted always-enabled tri-state buffer between "LCD_DATA[5]" and its non-tri-state driver.
     Warning (13035): Inserted always-enabled tri-state buffer between "LCD_DATA[6]" and its non-tri-state driver.
     Warning (13035): Inserted always-enabled tri-state buffer between "LCD_DATA[7]" and its non-tri-state driver.
-Info (13000): Registers with preset signals will power-up high
-Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Warning (13012): Latch ULA:ula|ULAResult[0] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[9]
+Warning (13012): Latch ULA:ula|ULAResult[1] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[9]
+Warning (13012): Latch ULA:ula|ULAResult[2] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[9]
+Warning (13012): Latch ULA:ula|ULAResult[3] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[9]
+Warning (13012): Latch ULA:ula|ULAResult[4] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[9]
+Warning (13012): Latch ULA:ula|ULAResult[5] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[9]
+Warning (13012): Latch ULA:ula|ULAResult[6] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[9]
+Warning (13012): Latch ULA:ula|ULAResult[7] has unsafe behavior
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[9]
 Warning (13009): TRI or OPNDRN buffers permanently enabled
     Warning (13010): Node "LCD_DATA[0]~synth"
     Warning (13010): Node "LCD_DATA[1]~synth"
@@ -407,13 +459,6 @@ Warning (13009): TRI or OPNDRN buffers permanently enabled
     Warning (13010): Node "LCD_DATA[6]~synth"
     Warning (13010): Node "LCD_DATA[7]~synth"
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "HEX1[6]" is stuck at GND
-    Warning (13410): Pin "HEX1[5]" is stuck at GND
-    Warning (13410): Pin "HEX1[4]" is stuck at GND
-    Warning (13410): Pin "HEX1[3]" is stuck at GND
-    Warning (13410): Pin "HEX1[2]" is stuck at GND
-    Warning (13410): Pin "HEX1[1]" is stuck at GND
-    Warning (13410): Pin "HEX1[0]" is stuck at GND
     Warning (13410): Pin "HEX2[6]" is stuck at GND
     Warning (13410): Pin "HEX2[5]" is stuck at GND
     Warning (13410): Pin "HEX2[4]" is stuck at GND
@@ -421,6 +466,20 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "HEX2[2]" is stuck at GND
     Warning (13410): Pin "HEX2[1]" is stuck at GND
     Warning (13410): Pin "HEX2[0]" is stuck at GND
+    Warning (13410): Pin "HEX3[6]" is stuck at GND
+    Warning (13410): Pin "HEX3[5]" is stuck at GND
+    Warning (13410): Pin "HEX3[4]" is stuck at GND
+    Warning (13410): Pin "HEX3[3]" is stuck at GND
+    Warning (13410): Pin "HEX3[2]" is stuck at GND
+    Warning (13410): Pin "HEX3[1]" is stuck at GND
+    Warning (13410): Pin "HEX3[0]" is stuck at GND
+    Warning (13410): Pin "HEX4[6]" is stuck at GND
+    Warning (13410): Pin "HEX4[5]" is stuck at GND
+    Warning (13410): Pin "HEX4[4]" is stuck at GND
+    Warning (13410): Pin "HEX4[3]" is stuck at GND
+    Warning (13410): Pin "HEX4[2]" is stuck at GND
+    Warning (13410): Pin "HEX4[1]" is stuck at GND
+    Warning (13410): Pin "HEX4[0]" is stuck at GND
     Warning (13410): Pin "HEX5[6]" is stuck at GND
     Warning (13410): Pin "HEX5[5]" is stuck at GND
     Warning (13410): Pin "HEX5[4]" is stuck at GND
@@ -442,13 +501,31 @@ Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "HEX7[2]" is stuck at GND
     Warning (13410): Pin "HEX7[1]" is stuck at GND
     Warning (13410): Pin "HEX7[0]" is stuck at GND
+    Warning (13410): Pin "LEDG[1]" is stuck at GND
     Warning (13410): Pin "LEDG[2]" is stuck at GND
     Warning (13410): Pin "LEDG[3]" is stuck at GND
     Warning (13410): Pin "LEDG[4]" is stuck at GND
     Warning (13410): Pin "LEDG[5]" is stuck at GND
     Warning (13410): Pin "LEDG[6]" is stuck at GND
     Warning (13410): Pin "LEDG[7]" is stuck at GND
-    Warning (13410): Pin "LEDG[8]" is stuck at GND
+    Warning (13410): Pin "LEDR[0]" is stuck at GND
+    Warning (13410): Pin "LEDR[1]" is stuck at GND
+    Warning (13410): Pin "LEDR[2]" is stuck at GND
+    Warning (13410): Pin "LEDR[3]" is stuck at GND
+    Warning (13410): Pin "LEDR[4]" is stuck at GND
+    Warning (13410): Pin "LEDR[5]" is stuck at GND
+    Warning (13410): Pin "LEDR[6]" is stuck at GND
+    Warning (13410): Pin "LEDR[7]" is stuck at GND
+    Warning (13410): Pin "LEDR[8]" is stuck at GND
+    Warning (13410): Pin "LEDR[9]" is stuck at GND
+    Warning (13410): Pin "LEDR[10]" is stuck at GND
+    Warning (13410): Pin "LEDR[11]" is stuck at GND
+    Warning (13410): Pin "LEDR[12]" is stuck at GND
+    Warning (13410): Pin "LEDR[13]" is stuck at GND
+    Warning (13410): Pin "LEDR[14]" is stuck at GND
+    Warning (13410): Pin "LEDR[15]" is stuck at GND
+    Warning (13410): Pin "LEDR[16]" is stuck at GND
+    Warning (13410): Pin "LEDR[17]" is stuck at GND
     Warning (13410): Pin "UART_TXD" is stuck at GND
     Warning (13410): Pin "LCD_ON" is stuck at VCC
     Warning (13410): Pin "LCD_BLON" is stuck at VCC
@@ -456,27 +533,20 @@ Warning (13024): Output pins are stuck at VCC or GND
 Info (17049): 8 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 11 input pin(s) that do not drive logic
+Warning (21074): Design contains 4 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "CLOCK_27"
     Warning (15610): No output dependent on input pin "KEY[2]"
     Warning (15610): No output dependent on input pin "KEY[3]"
-    Warning (15610): No output dependent on input pin "SW[7]"
-    Warning (15610): No output dependent on input pin "SW[12]"
-    Warning (15610): No output dependent on input pin "SW[13]"
-    Warning (15610): No output dependent on input pin "SW[14]"
-    Warning (15610): No output dependent on input pin "SW[15]"
-    Warning (15610): No output dependent on input pin "SW[16]"
-    Warning (15610): No output dependent on input pin "SW[17]"
     Warning (15610): No output dependent on input pin "UART_RXD"
-Info (21057): Implemented 412 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 553 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 25 input pins
     Info (21059): Implemented 89 output pins
     Info (21060): Implemented 80 bidirectional pins
-    Info (21061): Implemented 218 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 92 warnings
-    Info: Peak virtual memory: 4598 megabytes
-    Info: Processing ended: Fri Oct 21 12:23:35 2022
-    Info: Elapsed time: 00:00:01
-    Info: Total CPU time (on all processors): 00:00:01
+    Info (21061): Implemented 359 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 128 warnings
+    Info: Peak virtual memory: 4597 megabytes
+    Info: Processing ended: Mon Nov 07 12:06:25 2022
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:02
 
 

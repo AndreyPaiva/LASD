@@ -34,13 +34,15 @@ LCD_TEST MyLCD (
 .LCD_RS ( LCD_RS )
 );
 //---------- modifique a partir daqui --------
+/* Sprint 1
+assign LEDG[0]=KEY[1];
 
-//assign LEDG[0]=KEY[1];
+assign LEDR[3:0] = SW[17]?SW[3:0]-SW[7:4]:SW[3:0]+SW[7:4];
 
-//assign LEDR[3:0] = SW[17]?SW[3:0]-SW[7:4]:SW[3:0]+SW[7:4];
+assign LEDR[3:0] = SW[17]?(SW[16]?SW[3:0]<<SW[7:4] : SW[3:0]>>SW[7:4]):(SW[16]?SW[3:0]-SW[7:4] : SW[3:0] + SW[7:4]);
+*/
 
-//assign LEDR[3:0] = SW[17]?(SW[16]?SW[3:0]<<SW[7:4] : SW[3:0]>>SW[7:4]):(SW[16]?SW[3:0]-SW[7:4] : SW[3:0] + SW[7:4]);
-
+/* Sprint 2
 wire clock;
 wire [3:0] num;
 wire clock18hz;
@@ -62,5 +64,33 @@ Divisor18hz div(CLOCK_50, clock18hz);
 assign LEDG[1] = clock18hz;
 
 Desafio2 desafio(clock18hz, LEDR[17:0]);
+*/
+
+/* Sprint 3
+assign LEDG[8] = ~KEY[1];
+DecodificadorHexa7Seg hexa0(SW[3:0], HEX0[0:6]);
+DecodificadorHexa7Seg hexa1(SW[7:4], HEX1[0:6]);
+RegisterFile banco(SW[13:11], SW[10:8], SW[16:14], SW[17], SW[7:0], ~KEY[1], w_d0x0[7:0], w_d0x1[7:0]);
+*/
+
+wire [7:0] w_rd1SrcA;
+wire [7:0] w_rd2;
+wire [7:0] w_ScrB;
+wire [7:0] w_ULAResultWd3;
+assign LEDG[8] = ~KEY[1];
+
+DecodificadorHexa7Seg hexa0(SW[3:0], HEX0[0:6]);
+DecodificadorHexa7Seg hexa1(SW[7:4], HEX1[0:6]);
+
+RegisterFile register(.ra1(SW[13:11]), .ra2(3'b010), .wa3(SW[16:14]), .we3(1'b1), .wd3(SW[7:0]), .clk(~KEY[1]), .rd1(w_rd1SrcA[7:0]), .rd2(w_rd2[7:0]));
+
+assign w_ScrB = SW[17]	?	8'h07	:	w_rd2;
+assign w_d0x0[7:0] = w_rd1SrcA[7:0];
+assign w_d1x0[7:0] = w_rd2[7:0];
+assign w_d1x1[7:0] = w_ScrB[7:0];
+
+ULA ula(.SrcA(w_rd1SrcA[7:0]), .SrcB(w_ScrB[7:0]), .ULAControl(SW[10:8]), .Z(LEDG[0]), .ULAResult(w_ULAResultWd3[7:0]));
+
+assign w_d0x4[7:0] = w_ULAResultWd3[7:0];
 
 endmodule
