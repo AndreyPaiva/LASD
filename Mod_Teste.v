@@ -73,6 +73,7 @@ DecodificadorHexa7Seg hexa1(SW[7:4], HEX1[0:6]);
 RegisterFile banco(SW[13:11], SW[10:8], SW[16:14], SW[17], SW[7:0], ~KEY[1], w_d0x0[7:0], w_d0x1[7:0]);
 */
 
+/* Sprint 4
 wire [7:0] w_rd1SrcA;
 wire [7:0] w_rd2;
 wire [7:0] w_ScrB;
@@ -92,5 +93,31 @@ assign w_d1x1[7:0] = w_ScrB[7:0];
 ULA ula(.SrcA(w_rd1SrcA[7:0]), .SrcB(w_ScrB[7:0]), .ULAControl(SW[10:8]), .Z(LEDG[0]), .ULAResult(w_ULAResultWd3[7:0]));
 
 assign w_d0x4[7:0] = w_ULAResultWd3[7:0];
+*/
+
+wire w_ULASrc, w_RegWrite, w_RegDst;
+wire [2:0] w_ULAControl, w_wa3;
+wire [7:0] w_PCp1, w_PC, w_rd1SrcA, w_rd2, w_SrcB, w_ULAResultWd3;
+wire [31:0] w_Inst;
+
+
+
+PC pc(.PCin(w_PCp1[7:0]), .clk(KEY[1]), .PC(w_PC[7:0]));
+InstMem memoria(.A(w_PC[7:0]), .RD(w_Inst[31:0]));
+ControlUnit controle(.OP(w_Inst[31:26]), .Funct(w_Inst[5:0]), .Jump(LEDR[0]), .MemtoReg(LEDR[1]), .MemWrite(LEDR[2]), .Branch(LEDR[3]), .ULAControl(w_ULAControl[2:0]), .ULASrc(w_ULASrc), .RegDst(w_RegDst), .RegWrite(w_RegWrite));assign w_d0x4[7:0] = w_PC[7:0];
+assign LEDR[6:4] = w_ULAControl[2:0];
+assign LEDR[7] = w_ULASrc;
+assign LEDR[8] = w_RegDst;
+assign LEDR[9] = w_RegWrite;
+assign w_wa3[2:0] = w_RegDst	?	w_Inst[15:11]	:	w_Inst[20:16];
+assign w_PCp1[7:0] = w_PC[7:0] + 1;
+
+RegisterFile registro(.ra1(w_Inst[25:21]), .ra2(w_Inst[20:16]), .wa3(w_wa3[2:0]), .we3(w_RegWrite), .wd3(w_ULAResultWd3[7:0]), .clk(KEY[1]), .rd1(w_rd1SrcA[7:0]), .rd2(w_rd2[7:0]), .S0(w_d0x0[7:0]), .S1(w_d0x1[7:0]), .S2(w_d0x2[7:0]), .S3(w_d0x3[7:0]), .S4(w_d1x0[7:0]),.S5(w_d1x1[7:0]), .S6(w_d1x2[7:0]), .S7(w_d1x3[7:0]));
+
+assign w_SrcB[7:0] = w_ULASrc	?	w_Inst[7:0]	:	w_rd2[7:0];
+
+ULA ulaula(.SrcA(w_rd1SrcA[7:0]), .SrcB(w_SrcB[7:0]), .ULAControl(w_ULAControl[2:0]), .Z(LEDG[0]), .ULAResult(w_ULAResultWd3[7:0]));
+
+assign LEDG[1] = KEY[1];
 
 endmodule

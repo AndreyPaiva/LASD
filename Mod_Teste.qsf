@@ -477,13 +477,20 @@ set_global_assignment -name VERILOG_FILE Mod_Teste.v
 set_global_assignment -name VERILOG_FILE LCD_TEST2.v
 set_global_assignment -name VERILOG_FILE LCD_Controller.v
 set_global_assignment -name VERILOG_FILE DecodificadorHexa7Seg.v
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
-set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
-set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name VERILOG_FILE DivFrequencia.v
 set_global_assignment -name VERILOG_FILE ContM10.v
 set_global_assignment -name VERILOG_FILE Desafio2.v
 set_global_assignment -name VERILOG_FILE Divisor18hz.v
 set_global_assignment -name VERILOG_FILE RegisterFile.v
 set_global_assignment -name VERILOG_FILE ULA.v
+set_global_assignment -name QIP_FILE output_files/lpm_constant0.qip
+set_global_assignment -name QIP_FILE output_files/lpm_constant1.qip
+set_global_assignment -name QIP_FILE output_files/lpm_constant2.qip
+set_global_assignment -name BDF_FILE Schematic.bdf
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name VERILOG_FILE PC.v
+set_global_assignment -name VERILOG_FILE InstMem.v
+set_global_assignment -name VERILOG_FILE ControlUnit.v
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

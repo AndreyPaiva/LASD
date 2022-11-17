@@ -2,60 +2,76 @@
 TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
-Type  : Slow Model Setup 'CLOCK_50'
-Slack : -6.648
-TNS   : -119.210
+Type  : Slow Model Setup 'PC:pc|PC[0]'
+Slack : -7.063
+TNS   : -54.241
 
-Type  : Slow Model Setup 'SW[10]'
-Slack : -5.174
-TNS   : -39.632
+Type  : Slow Model Setup 'KEY[1]'
+Slack : -5.977
+TNS   : -367.388
+
+Type  : Slow Model Setup 'CLOCK_50'
+Slack : -5.605
+TNS   : -114.864
+
+Type  : Slow Model Hold 'PC:pc|PC[0]'
+Slack : -3.338
+TNS   : -21.737
+
+Type  : Slow Model Hold 'KEY[1]'
+Slack : -2.708
+TNS   : -16.361
 
 Type  : Slow Model Hold 'CLOCK_50'
 Slack : 0.391
-TNS   : 0.000
-
-Type  : Slow Model Hold 'SW[10]'
-Slack : 0.635
 TNS   : 0.000
 
 Type  : Slow Model Minimum Pulse Width 'CLOCK_50'
 Slack : -1.380
 TNS   : -52.380
 
-Type  : Slow Model Minimum Pulse Width 'SW[10]'
-Slack : -1.380
-TNS   : -1.380
-
 Type  : Slow Model Minimum Pulse Width 'KEY[1]'
 Slack : -1.222
-TNS   : -57.222
+TNS   : -121.222
+
+Type  : Slow Model Minimum Pulse Width 'PC:pc|PC[0]'
+Slack : -1.020
+TNS   : -52.098
+
+Type  : Fast Model Setup 'PC:pc|PC[0]'
+Slack : -2.741
+TNS   : -20.942
+
+Type  : Fast Model Setup 'KEY[1]'
+Slack : -2.077
+TNS   : -107.940
 
 Type  : Fast Model Setup 'CLOCK_50'
-Slack : -2.577
-TNS   : -32.916
+Slack : -1.743
+TNS   : -28.447
 
-Type  : Fast Model Setup 'SW[10]'
-Slack : -1.955
-TNS   : -14.732
+Type  : Fast Model Hold 'PC:pc|PC[0]'
+Slack : -1.845
+TNS   : -12.709
 
-Type  : Fast Model Hold 'SW[10]'
-Slack : -0.035
-TNS   : -0.083
+Type  : Fast Model Hold 'KEY[1]'
+Slack : -1.549
+TNS   : -16.162
 
 Type  : Fast Model Hold 'CLOCK_50'
-Slack : 0.215
+Slack : 0.087
 TNS   : 0.000
 
 Type  : Fast Model Minimum Pulse Width 'CLOCK_50'
 Slack : -1.380
 TNS   : -52.380
 
-Type  : Fast Model Minimum Pulse Width 'SW[10]'
-Slack : -1.380
-TNS   : -1.380
-
 Type  : Fast Model Minimum Pulse Width 'KEY[1]'
 Slack : -1.222
-TNS   : -57.222
+TNS   : -121.222
+
+Type  : Fast Model Minimum Pulse Width 'PC:pc|PC[0]'
+Slack : -0.174
+TNS   : -6.612
 
 ------------------------------------------------------------
