@@ -95,6 +95,7 @@ ULA ula(.SrcA(w_rd1SrcA[7:0]), .SrcB(w_ScrB[7:0]), .ULAControl(SW[10:8]), .Z(LED
 assign w_d0x4[7:0] = w_ULAResultWd3[7:0];
 */
 
+/* Sprint 5
 wire w_ULASrc, w_RegWrite, w_RegDst;
 wire [2:0] w_ULAControl, w_wa3;
 wire [7:0] w_PCp1, w_PC, w_rd1SrcA, w_rd2, w_SrcB, w_ULAResultWd3;
@@ -119,5 +120,37 @@ assign w_SrcB[7:0] = w_ULASrc	?	w_Inst[7:0]	:	w_rd2[7:0];
 ULA ulaula(.SrcA(w_rd1SrcA[7:0]), .SrcB(w_SrcB[7:0]), .ULAControl(w_ULAControl[2:0]), .Z(LEDG[0]), .ULAResult(w_ULAResultWd3[7:0]));
 
 assign LEDG[1] = KEY[1];
+*/
+
+wire w_ULASrc, w_RegWrite, w_RegDst, w_MemtoReg, w_MemWrite, clock1;
+wire [2:0] w_ULAControl, w_wa3;
+wire [7:0] w_PCp1, w_PC, w_rd1SrcA, w_rd2, w_SrcB, w_ULAResultWd3, w_wd3, w_RData;
+wire [31:0] w_Inst;
+
+
+DivFrequencia divisor(.clk50M(CLOCK_50), .clk1(clock1));
+PC pc(.PCin(w_PCp1[7:0]), .clk(clock1), .PC(w_PC[7:0]));
+RomInstMem memoria(.address(w_PC[7:0]), .clock(CLOCK_50), .q(w_Inst[31:0]));
+ControlUnit controle(.OP(w_Inst[31:26]), .Funct(w_Inst[5:0]), .Jump(LEDR[0]), .MemtoReg(w_MemtoReg), .MemWrite(w_MemWrite), .Branch(LEDR[3]), .ULAControl(w_ULAControl[2:0]), .ULASrc(w_ULASrc), .RegDst(w_RegDst), .RegWrite(w_RegWrite));
+
+assign w_d0x4[7:0] = w_PC[7:0];
+assign LEDR[1] = w_MemtoReg;
+assign LEDR[2] = w_MemWrite;
+assign LEDR[6:4] = w_ULAControl[2:0];
+assign LEDR[7] = w_ULASrc;
+assign LEDR[8] = w_RegDst;
+assign LEDR[9] = w_RegWrite;
+assign w_wa3[2:0] = w_RegDst	?	w_Inst[15:11]	:	w_Inst[20:16];
+assign w_PCp1[7:0] = w_PC[7:0] + 1;
+
+RegisterFile registro(.ra1(w_Inst[25:21]), .ra2(w_Inst[20:16]), .wa3(w_wa3[2:0]), .we3(w_RegWrite), .wd3(w_wd3[7:0]), .clk(clock1), .rd1(w_rd1SrcA[7:0]), .rd2(w_rd2[7:0]), .S0(w_d0x0[7:0]), .S1(w_d0x1[7:0]), .S2(w_d0x2[7:0]), .S3(w_d0x3[7:0]), .S4(w_d1x0[7:0]),.S5(w_d1x1[7:0]), .S6(w_d1x2[7:0]), .S7(w_d1x3[7:0]));
+
+assign w_SrcB[7:0] = w_ULASrc	?	w_Inst[7:0]	:	w_rd2[7:0];
+
+ULA ulaula(.SrcA(w_rd1SrcA[7:0]), .SrcB(w_SrcB[7:0]), .ULAControl(w_ULAControl[2:0]), .Z(LEDG[0]), .ULAResult(w_ULAResultWd3[7:0]));
+RamDataMem mem(.address(w_ULAResultWd3[7:0]), .clock(CLOCK_50), .data(w_rd2[7:0]), .wren(w_MemWrite), .q(w_RData));
+
+assign w_wd3[7:0] = w_MemtoReg	?	w_RData[7:0]	:	w_ULAResultWd3[7:0];
+assign LEDG[1] = clock1;
 
 endmodule
